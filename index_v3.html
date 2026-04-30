@@ -580,9 +580,12 @@
     progress: true,
     touch: true,
     overview: false,
-    navigationMode: 'linear',
     keyboard: { 38: null, 40: null },
-    swipe: { up: false, down: false },
+  });
+
+  Reveal.on('slidechanged', function() {
+    var current = Reveal.getCurrentSlide();
+    if (current) current.scrollTop = 0;
   });
 </script>
 </body>
