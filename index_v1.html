@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香港雲杉財富 - Spruce Global Wealth Management</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css">
+<style>
+  :root {
+    --spruce-green: #2E6B4F;
+    --spruce-light: #4A9E74;
+    --spruce-gold: #B8963E;
+    --spruce-bg: #F5F7F4;
+    --spruce-dark: #1A3D2C;
+    --spruce-accent: #E8F0EB;
+  }
+
+  .reveal {
+    font-family: 'PingFang HK', 'Microsoft YaHei', 'Noto Sans HK', 'Helvetica Neue', sans-serif;
+  }
+
+  .reveal .slides section {
+    height: 100%;
+    padding: 40px 60px;
+    text-align: left;
+  }
+
+  /* Cover slide */
+  .cover-slide {
+    background: linear-gradient(135deg, var(--spruce-dark) 0%, var(--spruce-green) 50%, #1a4a35 100%);
+    color: white;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .cover-slide .cover-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 24px;
+    opacity: 0.9;
+  }
+  .cover-slide h1 {
+    font-size: 2.8em !important;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: white !important;
+    text-transform: none !important;
+  }
+  .cover-slide .cover-sub {
+    font-size: 1.1em;
+    margin-top: 12px;
+    opacity: 0.85;
+    color: #c8e6d4;
+  }
+  .cover-slide .cover-bottom {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.85em;
+    opacity: 0.7;
+  }
+
+  /* Section title */
+  .section-title {
+    color: var(--spruce-dark);
+  }
+  .section-title h2 {
+    font-size: 2.2em !important;
+    color: var(--spruce-dark) !important;
+    font-weight: 700;
+    text-transform: none !important;
+    position: relative;
+    display: inline-block;
+  }
+  .section-title h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--spruce-gold);
+    margin-top: 10px;
+    border-radius: 2px;
+  }
+
+  /* Card grid */
+  .card-grid {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px 24px;
+    flex: 1;
+    min-width: 220px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    border-top: 4px solid var(--spruce-green);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  }
+  .card .card-icon {
+    font-size: 2.4em;
+    margin-bottom: 12px;
+  }
+  .card h4 {
+    color: var(--spruce-dark);
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .card p {
+    color: #555;
+    font-size: 0.85em;
+    line-height: 1.6;
+  }
+
+  /* Team cards */
+  .team-grid {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  .team-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    max-width: 260px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    border-bottom: 4px solid var(--spruce-gold);
+  }
+  .team-card .avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--spruce-accent);
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8em;
+    color: var(--spruce-green);
+    font-weight: 700;
+  }
+  .team-card .name {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--spruce-dark);
+  }
+  .team-card .role {
+    font-size: 0.85em;
+    color: var(--spruce-green);
+    font-weight: 500;
+    margin: 6px 0;
+  }
+  .team-card .bio {
+    font-size: 0.75em;
+    color: #666;
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+
+  /* Timeline */
+  .timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 40px;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: 8%;
+    right: 8%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--spruce-green), var(--spruce-gold), var(--spruce-green));
+    border-radius: 2px;
+  }
+  .timeline-item {
+    text-align: center;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .timeline-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--spruce-gold);
+    margin: 0 auto 12px;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .timeline-year {
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--spruce-dark);
+  }
+  .timeline-text {
+    font-size: 0.75em;
+    color: #555;
+    margin-top: 6px;
+    line-height: 1.4;
+    padding: 0 8px;
+  }
+
+  /* Process steps */
+  .process-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 30px;
+    justify-content: center;
+  }
+  .process-step {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 16px;
+    width: 160px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    border-left: 3px solid var(--spruce-green);
+    position: relative;
+  }
+  .process-step .step-num {
+    font-size: 0.8em;
+    color: var(--spruce-gold);
+    font-weight: 700;
+  }
+  .process-step .step-title {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--spruce-dark);
+    margin-top: 4px;
+  }
+  .process-step .step-desc {
+    font-size: 0.7em;
+    color: #666;
+    margin-top: 4px;
+    line-height: 1.3;
+  }
+
+  /* Tag list */
+  .intro-text {
+    font-size: 1.1em;
+    color: #444;
+    line-height: 1.8;
+    margin-top: 30px;
+  }
+  .intro-text strong {
+    color: var(--spruce-dark);
+  }
+
+  /* Service items */
+  .service-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+  }
+  .service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: var(--spruce-accent);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .service-item .s-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--spruce-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3em;
+    flex-shrink: 0;
+  }
+  .service-item h4 {
+    color: var(--spruce-dark);
+    font-size: 1em;
+    margin-bottom: 4px;
+  }
+  .service-item p {
+    color: #555;
+    font-size: 0.8em;
+    line-height: 1.5;
+  }
+
+  /* Flow diagram */
+  .flow-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 12px 0;
+    flex-wrap: wrap;
+  }
+  .flow-box {
+    background: white;
+    border: 2px solid var(--spruce-green);
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: center;
+    min-width: 110px;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: var(--spruce-dark);
+  }
+  .flow-arrow {
+    color: var(--spruce-gold);
+    font-size: 1.3em;
+    font-weight: 700;
+  }
+
+  /* Contact slide */
+  .contact-slide {
+    background: linear-gradient(135deg, var(--spruce-dark) 0%, var(--spruce-green) 50%, #1a4a35 100%);
+    color: white;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact-slide h2 {
+    color: white !important;
+    font-size: 2.4em !important;
+    text-transform: none !important;
+  }
+  .contact-info {
+    font-size: 1.3em;
+    margin-top: 24px;
+    line-height: 2;
+  }
+  .contact-tagline {
+    color: #c8e6d4;
+    font-size: 1em;
+    margin-top: 30px;
+  }
+
+  /* Advantages highlight */
+  .advantage-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    align-items: stretch;
+  }
+  .advantage-box {
+    flex: 1;
+    background: white;
+    border-radius: 14px;
+    padding: 28px 22px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--spruce-green);
+  }
+  .advantage-box h4 {
+    color: var(--spruce-dark);
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+  .advantage-box ul {
+    font-size: 0.8em;
+    color: #555;
+    line-height: 1.7;
+    padding-left: 18px;
+  }
+
+  /* Footer */
+  .slide-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 60px;
+    right: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7em;
+    color: #999;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+  }
+
+  /* Background accent */
+  .bg-accent {
+    background-color: var(--spruce-bg);
+  }
+
+  /* Subtitle */
+  .subtitle {
+    color: #666;
+    font-size: 0.95em;
+    margin-bottom: 10px;
+  }
+
+  /* Two column */
+  .two-col {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+  }
+  .two-col > div {
+    flex: 1;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .card-grid, .team-grid, .advantage-row, .two-col {
+      flex-direction: column;
+    }
+    .service-list {
+      grid-template-columns: 1fr;
+    }
+    .timeline {
+      flex-direction: column;
+      gap: 20px;
+    }
+    .timeline::before {
+      display: none;
+    }
+    .reveal .slides section {
+      padding: 20px 24px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- Slide 1: Cover -->
+<section class="cover-slide">
+  <div class="cover-icon">
+    <svg viewBox="0 0 100 100" width="100" height="100">
+      <polygon points="50,5 75,25 75,55 50,75 25,55 25,25" fill="none" stroke="white" stroke-width="2.5" opacity="0.8"/>
+      <polygon points="50,20 65,32 65,52 50,60 35,52 35,32" fill="none" stroke="white" stroke-width="2" opacity="0.9"/>
+      <line x1="50" y1="60" x2="50" y2="95" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <h1>香港雲杉財富</h1>
+  <p class="cover-sub">Spruce Global Wealth Management Ltd.</p>
+  <p class="cover-bottom">讓您安心的海外資產管家</p>
+</section>
+
+<!-- Slide 2: Company Introduction -->
+<section class="bg-accent">
+  <div class="section-title">
+    <h2>公司簡介</h2>
+  </div>
+  <div class="intro-text" style="margin-top: 50px;">
+    <p><strong>香港雲杉財富有限公司</strong>，Spruce Global Wealth Management Ltd.</p>
+    <p style="margin-top: 20px;">雲杉財富成立於香港，專注於服務<strong>高淨值人士</strong>的獨立財富管理機構，提供全方位的財富規劃與全球資產配置服務。</p>
+    <p style="margin-top: 20px;">我們秉持<strong>「讓客戶安心」</strong>的原則，通過科學專業的方法實現全方位、全生命周期的一站式財富規劃，讓客戶省心、放心，為客戶海外資產保駕護航。</p>
+  </div>
+</section>
+
+<!-- Slide 3: Business Introduction -->
+<section class="bg-accent">
+  <div class="section-title">
+    <h2>業務簡介</h2>
+  </div>
+  <p style="color:#555; margin-top:10px;">我們提供一站式、全方位的財富管理服務，滿足客戶多元化需求</p>
+  <div class="service-list" style="margin-top: 30px;">
+    <div class="service-item">
+      <div class="s-icon">&#9733;</div>
+      <div><h4>財富規劃</h4><p>專業財富診斷與規劃，量身定制資產配置方案，實現財富穩健增長與傳承目標</p></div>
+    </div>
+    <div class="service-item">
+      <div class="s-icon">&#127760;</div>
+      <div><h4>全球配置</h4><p>跨市場、跨幣種、跨資產類別的全球資產配置，分散風險，捕捉全球投資機會</p></div>
+    </div>
+    <div class="service-item">
+      <div class="s-icon">&#127809;</div>
+      <div><h4>港險規劃</h4><p>香港保險產品配置，提供全面的風險保障</p></div>
+    </div>
+    <div class="service-item">
+      <div class="s-icon">&#10010;</div>
+      <div><h4>全球醫療</h4><p>高端全球醫療保障方案，提供全球頂尖醫療資源與健康管理服務</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 4: Company Advantages -->
+<section class="bg-accent">
+  <div class="section-title">
+    <h2>公司優勢</h2>
+  </div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">&#128300;</div>
+      <h4>科學方法</h4>
+      <p>採用國際先進財富管理模型，結合客戶具體情況，提供從財富積累到財富傳承的全流程規劃服務</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">&#128101;</div>
+      <h4>專業團隊</h4>
+      <p>合夥人均為各領域資深人士，擁有全球化的投資視野，為客戶出海資產長期保駕護航</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">&#128200;</div>
+      <h4>優質資產</h4>
+      <p>長期的從業經歷讓我們擁有豐富的優質資產資源，嚴格的篩選標準為客戶挖掘具備長期增長潛力的優質資產</p>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 5: Team -->
+<section class="bg-accent">
+  <div class="section-title">
+    <h2>核心團隊</h2>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="avatar">高</div>
+      <div class="name">高昕煒 CFA</div>
+      <div class="role">首席財富官</div>
+      <div class="bio">
+        中國基金業金牛獎評委<br>
+        招商證券研究所金融產品首席分析師<br>
+        華創證券金融產品部總經理<br>
+        第一創業證券財富管理部負責人
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="avatar">D</div>
+      <div class="name">David Chiu</div>
+      <div class="role">首席資產配置官</div>
+      <div class="bio">
+        財經媒體特邀宏觀評論員<br>
+        某頭部期貨首席宏觀分析師<br>
+        某頭部券商首席資產配置分析師
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="avatar">A</div>
+      <div class="name">Athena Zeng</div>
+      <div class="role">首席保險規劃師</div>
+      <div class="bio">
+        江西財經大學 金融學學士<br>
+        香港浸會大學 會計學碩士<br>
+        英國保誠保險<br>
+        英國壽險百萬圓桌會員
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="avatar">S</div>
+      <div class="name">Ms. Sung CFA</div>
+      <div class="role">首席產品分析師</div>
+      <div class="bio">
+        浙江大學 工程學士<br>
+        香港大學 金融工程博士<br>
+        深圳市海外高層次人才<br>
+        前海金融局宏觀研究員
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 6: Financial Asset Allocation -->
+<section class="bg-accent">
+  <div class="section-title">
+    <h2>金融資產配置方案</h2>
+  </div>
+  <div style="display:flex; justify-content:center; align-items:center; gap:30px; margin-top:40px; flex-wrap:wrap;">
+    <div style="text-align:center">
+      <div style="background:var(--spruce-accent); border-radius:50%; width:120px; height:120px; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; border:3px solid var(--spruce-green);">
+        <span style="font-size:2em; font-weight:700; color:var(--spruce-dark);">01</span>
+      </div>
+      <p style="font-weight:600; color:var(--spruce-dark);">確定要求回報率</p>
+    </div>
+    <div style="color:var(--spruce-gold); font-size:2em;">&#8594;</div>
+    <div style="text-align:center">
+      <div style="background:var(--spruce-accent); border-radius:50%; width:120px; height:120px; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; border:3px solid var(--spruce-green);">
+        <span style="font-size:2em; font-weight:700; color:var(--spruce-dark);">02</span>
+      </div>
+      <p style="font-weight:600; color:var(--spruce-dark);">大類資產類別配置</p>
+    </div>
+    <div style="color:var(--spruce-gold); font-size:2em;">&#8594;</div>
+    <div style="text-align:center">
+      <div style="background:var(--spruce-accent); border-radius:50%; width:120px; height:120px; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; border:3px solid var(--spruce-green);">
+        <span style="font-size:2em; font-weight:700; color:var(--spruce-dark);">03</span>
+      </div>
+      <p style="font-weight:600; color:var(--spruce-dark);">投資策略配置</p>
+    </div>
+  </div>
+  <div style="display:flex; justify-content:center; gap:30px; margin-top:40px; flex-wrap:wrap;">
+    <div style="text-align:center">
+      <div style="background:var(--spruce-accent); border-radius:50%; width:120px; height:120px; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; border:3px solid var(--spruce-green);">
+        <span style="font-size:2em; font-weight:700; color:var(--spruce-dark);">04</span>
+      </div>
+      <p style="font-weight:600; color:var(--spruce-dark);">金融產品優選</p>
+    </div>
+    <div style="color:var(--spruce-gold); font-size:2em;">&#8594;</div>
+    <div style="text-align:center">
+      <div style="background:var(--spruce-accent); border-radius:50%; width:120px; height:120px; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; border:3px solid var(--spruce-green);">
+        <span style="font-size:2em; font-weight:700; color:var(--spruce-dark);">05</span>
+      </div>
+      <p style="font-weight:600; color:var(--spruce-dark);">組合優化與實現</p>
+    </div>
+    <div style="color:var(--spruce-gold); font-size:2em;">&#8594;</div>
+    <div style="text-align:center">
+      <div style="background:var(--spruce-accent); border-radius:50%; width:120px; height:120px; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; border:3px solid var(--spruce-green);">
+        <span style="font-size:2em; font-weight:700; color:var(--spruce-dark);">06</span>
+      </div>
+      <p style="font-weight:600; color:var(--spruce-dark);">投後管理與再平衡</p>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 7-8: Image slides (simplified) -->
+<section class="bg-accent">
+  <div class="section-title">
+    <h2>全球資產配置視野</h2>
+  </div>
+  <div style="text-align:center; margin-top:30px;">
+    <img src="images/slide7_Picture 8_1.png" alt="Global Asset Allocation" style="max-width:70%; max-height:55vh; border-radius:12px; box-shadow:0 4px 24px rgba(0,0,0,0.1);">
+    <p style="color:#888; margin-top:15px; font-size:0.85em;">跨市場、跨幣種、跨資產類別配置</p>
+  </div>
+</section>
+
+<section class="bg-accent">
+  <div class="section-title">
+    <h2>投資組合構建</h2>
+  </div>
+  <div style="text-align:center; margin-top:30px;">
+    <img src="images/slide8_Picture 8_2.png" alt="Portfolio Construction" style="max-width:70%; max-height:55vh; border-radius:12px; box-shadow:0 4px 24px rgba(0,0,0,0.1);">
+    <p style="color:#888; margin-top:15px; font-size:0.85em;">科學化投資組合構建流程</p>
+  </div>
+</section>
+
+<!-- Slide 9: Cash Flow Matching Model -->
+<section class="bg-accent">
+  <div class="section-title">
+    <h2>現金流匹配模型</h2>
+  </div>
+  <p style="color:#555; margin-top:10px;">根據客戶初始資產、現金流情況，通過現金流匹配模型測算出客戶真實要求回報率</p>
+  <div class="timeline" style="margin-top: 40px;">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">2025</div>
+      <div class="timeline-text"><strong>初始資產</strong><br>資產池需要考慮定期的資產流入與流出</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">2035</div>
+      <div class="timeline-text"><strong>孩子上大學</strong><br>教育支出</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">2045</div>
+      <div class="timeline-text"><strong>孩子結婚</strong><br>買房買車，資金大額支出</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">2055</div>
+      <div class="timeline-text"><strong>光榮退休</strong><br>退休金進賬，現金流發生重大變化</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">20x5</div>
+      <div class="timeline-text"><strong>終值資產</strong><br>財富傳承</div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 10: Asset Allocation Model -->
+<section class="bg-accent">
+  <div class="section-title">
+    <h2>資產配置模型</h2>
+  </div>
+  <div class="two-col" style="margin-top:40px;">
+    <div>
+      <h4 style="color:var(--spruce-dark);">傳統資產</h4>
+      <div style="background:var(--spruce-accent); border-radius:12px; padding:20px; margin-top:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #d0ddd4;">
+          <span>股票</span><span style="color:var(--spruce-green); font-weight:600;">權益類</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #d0ddd4;">
+          <span>債券</span><span style="color:var(--spruce-green); font-weight:600;">固收類</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0;">
+          <span>現金管理</span><span style="color:var(--spruce-green); font-weight:600;">流動性</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h4 style="color:var(--spruce-dark);">另類資產</h4>
+      <div style="background:var(--spruce-accent); border-radius:12px; padding:20px; margin-top:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #d0ddd4;">
+          <span>對衝基金</span><span style="color:var(--spruce-gold); font-weight:600;">絕對回報</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #d0ddd4;">
+          <span>私募股權</span><span style="color:var(--spruce-gold); font-weight:600;">高增長</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #d0ddd4;">
+          <span>大宗商品</span><span style="color:var(--spruce-gold); font-weight:600;">抗通脹</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0;">
+          <span>保險產品</span><span style="color:var(--spruce-gold); font-weight:600;">保障傳承</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 11: Product Selection -->
+<section class="bg-accent">
+  <div class="section-title">
+    <h2>產品篩選與組合實現</h2>
+  </div>
+  <div class="two-col" style="margin-top:40px;">
+    <div style="background:white; border-radius:16px; padding:28px; box-shadow:0 4px 24px rgba(0,0,0,0.06);">
+      <h4 style="color:var(--spruce-dark); margin-bottom:16px;">篩選維度</h4>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="background:var(--spruce-accent); padding:12px 16px; border-radius:8px; font-weight:600; color:var(--spruce-dark);">&#10004; 策略邏輯評估</div>
+        <div style="background:var(--spruce-accent); padding:12px 16px; border-radius:8px; font-weight:600; color:var(--spruce-dark);">&#10004; 歷史業績歸因</div>
+        <div style="background:var(--spruce-accent); padding:12px 16px; border-radius:8px; font-weight:600; color:var(--spruce-dark);">&#10004; 團隊穩定性分析</div>
+        <div style="background:var(--spruce-accent); padding:12px 16px; border-radius:8px; font-weight:600; color:var(--spruce-dark);">&#10004; 風控體系評估</div>
+        <div style="background:var(--spruce-accent); padding:12px 16px; border-radius:8px; font-weight:600; color:var(--spruce-dark);">&#10004; 費率結構比較</div>
+      </div>
+    </div>
+    <div style="background:white; border-radius:16px; padding:28px; box-shadow:0 4px 24px rgba(0,0,0,0.06);">
+      <h4 style="color:var(--spruce-dark); margin-bottom:16px;">組合實現</h4>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="background:var(--spruce-accent); padding:12px 16px; border-radius:8px; font-weight:600; color:var(--spruce-dark);">&#10004; 風險預算分配</div>
+        <div style="background:var(--spruce-accent); padding:12px 16px; border-radius:8px; font-weight:600; color:var(--spruce-dark);">&#10004; 相關性優化</div>
+        <div style="background:var(--spruce-accent); padding:12px 16px; border-radius:8px; font-weight:600; color:var(--spruce-dark);">&#10004; 流動性管理</div>
+        <div style="background:var(--spruce-accent); padding:12px 16px; border-radius:8px; font-weight:600; color:var(--spruce-dark);">&#10004; 稅務效率優化</div>
+        <div style="background:var(--spruce-accent); padding:12px 16px; border-radius:8px; font-weight:600; color:var(--spruce-dark);">&#10004; 動態再平衡</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 12: Our Advantages Detail -->
+<section class="bg-accent">
+  <div class="section-title">
+    <h2>我們的優勢</h2>
+  </div>
+  <div class="advantage-row" style="margin-top:40px;">
+    <div class="advantage-box">
+      <h4>&#128218; 先進的方法體系</h4>
+      <ul>
+        <li>完善的資產配置模型</li>
+        <li>及時的宏觀檢測模型</li>
+        <li>科學的產品評價體系、篩選方法及標準</li>
+      </ul>
+    </div>
+    <div class="advantage-box">
+      <h4>&#127758; 豐富的產品資源</h4>
+      <ul>
+        <li>全球主流公募基金配置</li>
+        <li>全球知名對衝基金份額</li>
+        <li>國內知名私募基金份額及實地考察機會</li>
+      </ul>
+    </div>
+    <div class="advantage-box">
+      <h4>&#129309; 優質的服務態度</h4>
+      <ul>
+        <li>及時的業績與投資溝通</li>
+        <li>複雜產品的深度剖析及講解</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 13: Insurance Configuration -->
+<section class="bg-accent">
+  <div class="section-title">
+    <h2>保險配置方案</h2>
+  </div>
+  <div style="display:flex; align-items:center; gap:40px; margin-top:40px;">
+    <div style="flex:1;">
+      <img src="images/slide13_Picture 8_3.png" alt="Insurance" style="max-width:100%; border-radius:12px; box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+    </div>
+    <div style="flex:1;">
+      <p style="font-size:1.05em; color:#444; line-height:1.8;">
+        一併結合金融配置方案，確定客戶<strong style="color:var(--spruce-dark);">保險配置方案</strong>
+      </p>
+      <p style="font-size:1.05em; color:#444; line-height:1.8; margin-top:16px;">
+        確定<strong style="color:var(--spruce-dark);">保障型保險</strong>及<strong style="color:var(--spruce-dark);">投資型保險</strong>的配置比例
+      </p>
+      <p style="font-size:1.05em; color:#444; line-height:1.8; margin-top:16px;">
+        優選優質保單實現客戶<strong style="color:var(--spruce-dark);">保障需求</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 14: Service Process -->
+<section class="bg-accent">
+  <div class="section-title">
+    <h2>服務流程</h2>
+  </div>
+  <div class="process-grid" style="margin-top:30px;">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-title">初步溝通</div>
+      <div class="step-desc">初步溝通客戶需求及基本情況</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-title">簽署協議</div>
+      <div class="step-desc">簽署初步服務協議及保密協議</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-title">了解需求</div>
+      <div class="step-desc">了解客戶情況，明確客戶需求</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-title">制定規劃書</div>
+      <div class="step-desc">制定財富規劃書</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">05</div>
+      <div class="step-title">簽署服務協議</div>
+      <div class="step-desc">正式簽署服務協議</div>
+    </div>
+  </div>
+  <div class="process-grid" style="margin-top:8px;">
+    <div class="process-step">
+      <div class="step-num">06</div>
+      <div class="step-title">香港開戶</div>
+      <div class="step-desc">香港銀行、保險、券商開戶<br>(客戶須前來香港)</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">07</div>
+      <div class="step-title">資金轉入</div>
+      <div class="step-desc">客戶資金轉入並按規劃書購買保險、券商財富專戶</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">08</div>
+      <div class="step-title">定期跟蹤</div>
+      <div class="step-desc">定期跟蹤客戶資產情況，出具相關財富跟蹤報告</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">09</div>
+      <div class="step-title">調整建議</div>
+      <div class="step-desc">據市場變化給出資產調整建議</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">10</div>
+      <div class="step-title">持續服務</div>
+      <div class="step-desc">賬戶疑惑、投資疑惑、申請保險理賠</div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 15: Financial Asset Allocation Process -->
+<section class="bg-accent">
+  <div class="section-title">
+    <h2>金融資產配置流程</h2>
+  </div>
+  <div style="margin-top:30px;">
+    <div class="flow-row">
+      <div class="flow-box">01 券商開戶<br><small style="font-weight:400; color:#666;">客戶於指定香港券商開戶</small></div>
+      <span class="flow-arrow">&#8594;</span>
+      <div class="flow-box">02 成立專戶<br><small style="font-weight:400; color:#666;">雲杉財富向券商發起專戶成立要約</small></div>
+      <span class="flow-arrow">&#8594;</span>
+      <div class="flow-box">03 客戶買入<br><small style="font-weight:400; color:#666;">客戶購買專屬財富專戶</small></div>
+    </div>
+    <div style="text-align:center; margin:8px 0;">
+      <span style="color:var(--spruce-gold); font-size:1.5em;">&#8595;</span>
+    </div>
+    <div class="flow-row">
+      <div class="flow-box">06 券商開倉<br><small style="font-weight:400; color:#666;">券商接客戶開倉指令後執行客戶指令</small></div>
+      <span class="flow-arrow">&#8592;</span>
+      <div class="flow-box">05 客戶開倉指令<br><small style="font-weight:400; color:#666;">客戶確認後向券商發出操作指令</small></div>
+      <span class="flow-arrow">&#8592;</span>
+      <div class="flow-box">04 開倉建議<br><small style="font-weight:400; color:#666;">雲杉財富根據資產規劃書向客戶及券商提出產品購買建議</small></div>
+    </div>
+    <div style="text-align:center; margin:8px 0;">
+      <span style="color:var(--spruce-gold); font-size:1.5em;">&#8595;</span>
+    </div>
+    <div class="flow-row">
+      <div class="flow-box">07 調倉建議<br><small style="font-weight:400; color:#666;">雲杉財富向客戶和券商提出組合調整建議</small></div>
+      <span class="flow-arrow">&#8594;</span>
+      <div class="flow-box">08 客戶調倉指令<br><small style="font-weight:400; color:#666;">客戶確認後向券商發出操作指令</small></div>
+      <span class="flow-arrow">&#8594;</span>
+      <div class="flow-box">09 券商調倉<br><small style="font-weight:400; color:#666;">券商接客戶調倉指令後執行客戶指令</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 16: Contact -->
+<section class="contact-slide">
+  <h2>聯絡我們</h2>
+  <p style="color:#c8e6d4; font-size:1.1em; margin-top:16px;">歡迎預約專業諮詢，我們的專家團隊將為您提供個性化解決方案</p>
+  <div class="contact-info" style="margin-top:40px;">
+    <p>&#128222; 香港：+852 4069 4151</p>
+    <p>&#128222; 大陸：+86 186 0300 0300</p>
+  </div>
+  <p class="contact-tagline" style="margin-top:50px; font-size:1.2em;">香港雲杉財富有限公司 &mdash; Spruce Global Wealth Management Ltd.</p>
+  <p style="color:#a0d0b0; font-size:0.95em;">讓您安心的海外資產管家</p>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    center: true,
+    transition: 'slide',
+    transitionSpeed: 'default',
+    slideNumber: 'c/t',
+    width: 1280,
+    height: 720,
+    margin: 0.1,
+    minScale: 0.2,
+    maxScale: 2.0,
+  });
+</script>
+</body>
+</html>
