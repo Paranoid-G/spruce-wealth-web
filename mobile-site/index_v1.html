@@ -8,13 +8,7 @@
 <meta property="og:title" content="香港雲杉財富 | Spruce Global Wealth Management">
 <meta property="og:description" content="讓您安心的海外資產管家。香港雲杉財富專注於服務高淨值人士，提供財富規劃、全球資產配置及港險規劃一站式服務。">
 <meta property="og:image" content="https://paranoid-g.github.io/spruce-wealth-web/%E7%B4%A0%E6%9D%90/%E5%85%AC%E5%8F%B8logo%EF%BC%88%E4%BB%85%E5%9B%BE%E6%A0%87%EF%BC%89.png">
-<meta property="og:image:width" content="932">
-<meta property="og:image:height" content="932">
-<meta property="og:url" content="https://paranoid-g.github.io/spruce-wealth-web/mobile-site/">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="zh_HK">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://paranoid-g.github.io/spruce-wealth-web/%E7%B4%A0%E6%9D%90/%E5%85%AC%E5%8F%B8logo%EF%BC%88%E4%BB%85%E5%9B%BE%E6%A0%87%EF%BC%89.png">
 <title>香港雲杉財富 | Spruce Global Wealth Management</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
@@ -109,32 +103,16 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.45);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(0,0,0,0.5);
   }
-  .hero-panel {
-    position: relative;
-    z-index: 1;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 20px;
-    padding: 36px 28px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 320px;
-    width: 100%;
-  }
+  .hero > * { position: relative; z-index: 1; }
   .hero-logo {
     height: 50px;
     width: auto;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
   .hero-slogan {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
     color: #fff;
     letter-spacing: 0.05em;
@@ -183,20 +161,15 @@
     -webkit-tap-highlight-color: transparent;
   }
   .card:active { transform: scale(0.98); }
-  .card-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
   .card-icon {
-    font-size: 24px;
+    font-size: 28px;
+    margin-bottom: 12px;
     opacity: 0.85;
-    flex-shrink: 0;
   }
   .card-title {
     font-size: 20px;
     font-weight: 700;
+    margin-bottom: 8px;
   }
   .card-desc {
     font-size: 14px;
@@ -233,21 +206,16 @@
   }
   .advantage-item:nth-child(2) { background: var(--card-2); }
   .advantage-item:nth-child(3) { background: var(--card-3); }
-  .advantage-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
   .advantage-icon {
-    font-size: 22px;
+    font-size: 24px;
     color: var(--gold);
-    flex-shrink: 0;
+    margin-bottom: 10px;
   }
   .advantage-name {
     font-size: 17px;
     font-weight: 700;
     color: var(--gold);
+    margin-bottom: 8px;
   }
   .advantage-text {
     font-size: 14px;
@@ -458,8 +426,8 @@
 
   <!-- Language Switcher -->
   <div class="lang-switcher" id="langSwitcher">
-    <button data-lang="zh-HK" class="active">繁</button>
-    <button data-lang="zh-CN">简</button>
+    <button data-lang="zh-HK" class="active">繁體</button>
+    <button data-lang="zh-CN">简体</button>
     <button data-lang="en">EN</button>
   </div>
 
@@ -468,10 +436,8 @@
 
     <!-- Hero -->
     <section class="hero">
-      <div class="hero-panel">
-        <img class="hero-logo" src="../素材/公司logo（白字）.png" alt="Spruce Global Wealth Management">
-        <h1 class="hero-slogan" data-i18n="hero.slogan"></h1>
-      </div>
+      <img class="hero-logo" src="../素材/公司logo（白字）.png" alt="Spruce Global Wealth Management">
+      <h1 class="hero-slogan" data-i18n="hero.slogan"></h1>
     </section>
 
     <!-- About -->
@@ -488,26 +454,20 @@
       <h2 class="section-title" data-i18n="services.title"></h2>
       <div class="card-grid">
         <div class="card card-bg-1" data-view="wealth-planning">
-          <div class="card-head">
-            <span class="card-icon"><i class="fa-solid fa-chart-line"></i></span>
-            <h3 class="card-title" data-i18n="services.wealth.title"></h3>
-          </div>
+          <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h3 class="card-title" data-i18n="services.wealth.title"></h3>
           <p class="card-desc" data-i18n="services.wealth.desc"></p>
           <span class="card-more"><span data-i18n="nav.learnMore"></span> <i class="fa-solid fa-arrow-right"></i></span>
         </div>
         <div class="card card-bg-2" data-view="global-allocation">
-          <div class="card-head">
-            <span class="card-icon"><i class="fa-solid fa-globe"></i></span>
-            <h3 class="card-title" data-i18n="services.global.title"></h3>
-          </div>
+          <div class="card-icon"><i class="fa-solid fa-globe"></i></div>
+          <h3 class="card-title" data-i18n="services.global.title"></h3>
           <p class="card-desc" data-i18n="services.global.desc"></p>
           <span class="card-more"><span data-i18n="nav.learnMore"></span> <i class="fa-solid fa-arrow-right"></i></span>
         </div>
         <div class="card card-bg-3" data-view="hk-insurance">
-          <div class="card-head">
-            <span class="card-icon"><i class="fa-solid fa-umbrella"></i></span>
-            <h3 class="card-title" data-i18n="services.insurance.title"></h3>
-          </div>
+          <div class="card-icon"><i class="fa-solid fa-umbrella"></i></div>
+          <h3 class="card-title" data-i18n="services.insurance.title"></h3>
           <p class="card-desc" data-i18n="services.insurance.desc"></p>
           <span class="card-more"><span data-i18n="nav.learnMore"></span> <i class="fa-solid fa-arrow-right"></i></span>
         </div>
@@ -519,24 +479,18 @@
       <h2 class="section-title" data-i18n="advantages.title"></h2>
       <div class="advantage-list">
         <div class="advantage-item">
-          <div class="advantage-head">
-            <span class="advantage-icon"><i class="fa-solid fa-flask"></i></span>
-            <h3 class="advantage-name" data-i18n="advantages.a1.title"></h3>
-          </div>
+          <div class="advantage-icon"><i class="fa-solid fa-flask"></i></div>
+          <h3 class="advantage-name" data-i18n="advantages.a1.title"></h3>
           <p class="advantage-text" data-i18n="advantages.a1.text"></p>
         </div>
         <div class="advantage-item">
-          <div class="advantage-head">
-            <span class="advantage-icon"><i class="fa-solid fa-user-group"></i></span>
-            <h3 class="advantage-name" data-i18n="advantages.a2.title"></h3>
-          </div>
+          <div class="advantage-icon"><i class="fa-solid fa-user-group"></i></div>
+          <h3 class="advantage-name" data-i18n="advantages.a2.title"></h3>
           <p class="advantage-text" data-i18n="advantages.a2.text"></p>
         </div>
         <div class="advantage-item">
-          <div class="advantage-head">
-            <span class="advantage-icon"><i class="fa-solid fa-gem"></i></span>
-            <h3 class="advantage-name" data-i18n="advantages.a3.title"></h3>
-          </div>
+          <div class="advantage-icon"><i class="fa-solid fa-gem"></i></div>
+          <h3 class="advantage-name" data-i18n="advantages.a3.title"></h3>
           <p class="advantage-text" data-i18n="advantages.a3.text"></p>
         </div>
       </div>
