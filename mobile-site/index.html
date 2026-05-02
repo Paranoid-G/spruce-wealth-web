@@ -109,9 +109,9 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
   }
   .hero > * { position: relative; z-index: 1; }
   .hero-logo {
@@ -177,12 +177,13 @@
   }
   .card-icon {
     font-size: 24px;
-    opacity: 0.85;
+    color: var(--gold);
     flex-shrink: 0;
   }
   .card-title {
     font-size: 20px;
     font-weight: 700;
+    color: var(--gold);
   }
   .card-desc {
     font-size: 14px;
