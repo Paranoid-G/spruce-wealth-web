@@ -428,6 +428,68 @@
   }
 
   /* ---- Scrollbar ---- */
+  /* ---- Allocation Model Chart ---- */
+  .chart-section {
+    padding: 4px 0 40px;
+    position: relative;
+  }
+  .chart-container {
+    border-radius: var(--radius);
+    padding: 20px 14px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 8px;
+  }
+  .chart-container--saa { background: var(--card-1); }
+  .chart-container--port { background: transparent; padding: 12px 14px; }
+  .chart-container--taa { background: var(--card-2); margin-bottom: 0; }
+  .chart-container-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .chart-container-title--bottom {
+    margin-bottom: 0;
+    margin-top: 18px;
+  }
+  .chart-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  .chart-row:last-child { margin-bottom: 0; }
+  .chart-row span {
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    white-space: normal;
+    word-break: keep-all;
+    line-height: 1.3;
+  }
+  .chart-row--saag1 span { background: var(--card-2); min-width: 80px; max-width: 100px; }
+  .chart-row--saag2 span { background: var(--card-3); }
+  .chart-row--saag3 span { background: var(--card-4); min-width: 56px; max-width: 70px; }
+  .chart-row--portg span { background: var(--card-3); font-size: 15px; padding: 14px 20px; }
+  .chart-row--taag1 span { background: var(--card-4); min-width: 80px; max-width: 100px; }
+  .chart-row--taag2 span { background: var(--card-3); }
+  .chart-row--taag3 span { background: var(--card-1); min-width: 0; flex: 1 1 auto; }
+  .chart-svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+  }
+
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
 
@@ -652,6 +714,64 @@
         </ul>
         <p data-i18n="global.s2.p2"></p>
       </div>
+
+      <!-- Allocation Model Chart -->
+      <div class="detail-section">
+        <h3 class="detail-section-title" data-i18n="chart.title"></h3>
+        <div class="chart-section" id="allocationChart">
+
+        <div class="chart-container chart-container--saa">
+          <h3 class="chart-container-title" data-i18n="chart.c1.title"></h3>
+          <div class="chart-row chart-row--saag1" data-group="saag1">
+            <span data-i18n="chart.saag1.i1"></span>
+            <span data-i18n="chart.saag1.i2"></span>
+            <span data-i18n="chart.saag1.i3"></span>
+          </div>
+          <div class="chart-row chart-row--saag2" data-group="saag2">
+            <span data-i18n="chart.saag2.i1"></span>
+          </div>
+          <div class="chart-row chart-row--saag3" data-group="saag3">
+            <span data-i18n="chart.saag3.i1"></span>
+            <span data-i18n="chart.saag3.i2"></span>
+            <span data-i18n="chart.saag3.i3"></span>
+            <span data-i18n="chart.saag3.i4"></span>
+          </div>
+        </div>
+
+        <div class="chart-container chart-container--port">
+          <div class="chart-row chart-row--portg" data-group="portg">
+            <span data-i18n="chart.portg.i1"></span>
+          </div>
+        </div>
+
+        <div class="chart-container chart-container--taa">
+          <div class="chart-row chart-row--taag1" data-group="taag1">
+            <span data-i18n="chart.taag1.i1"></span>
+            <span data-i18n="chart.taag1.i2"></span>
+            <span data-i18n="chart.taag1.i3"></span>
+          </div>
+          <div class="chart-row chart-row--taag2" data-group="taag2">
+            <span data-i18n="chart.taag2.i1"></span>
+          </div>
+          <div class="chart-row chart-row--taag3" data-group="taag3">
+            <span data-i18n="chart.taag3.i1"></span>
+            <span data-i18n="chart.taag3.i2"></span>
+            <span data-i18n="chart.taag3.i3"></span>
+            <span data-i18n="chart.taag3.i4"></span>
+            <span data-i18n="chart.taag3.i5"></span>
+          </div>
+          <h3 class="chart-container-title chart-container-title--bottom" data-i18n="chart.c3.title"></h3>
+        </div>
+
+        <svg class="chart-svg" id="chartSvg">
+          <defs>
+            <marker id="arrowGold" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto">
+              <polyline points="0 0, 6 2.5, 0 5" fill="none" stroke="#B7A987" stroke-width="1.2" />
+            </marker>
+          </defs>
+        </svg>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -773,6 +893,29 @@
       'global.s2.li3': '設定波動率控制與風險預算再平衡機制',
       'global.s2.p2': '一旦宏觀環境發生變化，模型會發出調倉信號，幫助客戶捕捉機會或規避風險。每季度出具資產配置建議報告，並可根據重大事件（如聯儲議息）觸發臨時調倉。',
 
+      // ---- Allocation Model Chart ----
+      'chart.title': '資產配置模型（AAM）',
+      'chart.c1.title': '戰略資產配置',
+      'chart.saag1.i1': '要求回報率',
+      'chart.saag1.i2': '風險承受度',
+      'chart.saag1.i3': '資產收益率',
+      'chart.saag2.i1': '量化戰略配置模型',
+      'chart.saag3.i1': '權益',
+      'chart.saag3.i2': '固收',
+      'chart.saag3.i3': '商品',
+      'chart.saag3.i4': '貨幣',
+      'chart.portg.i1': '資產配置組合',
+      'chart.c3.title': '戰術資產配置',
+      'chart.taag1.i1': '一年比例',
+      'chart.taag1.i2': '半年比例',
+      'chart.taag1.i3': '月度比例',
+      'chart.taag2.i1': '宏觀數據追蹤與再平衡模型',
+      'chart.taag3.i1': '市場<br>估值',
+      'chart.taag3.i2': '流動<br>性',
+      'chart.taag3.i3': '宏觀<br>週期',
+      'chart.taag3.i4': '產業<br>趨勢',
+      'chart.taag3.i5': '盈利<br>預測',
+
       // ---- HK Insurance Detail ----
       'insurance.detail.title': '港險規劃',
       'insurance.intro': '我們擁有多年的保險配置經驗，會根據您的需求和情況選擇合適您的險種來覆蓋您的保障性需求。我們給您的方案可能是一個產品，也有可能是多個產品的組合。我們提供全市場產品對比，不以佣金為導向，只選擇最符合您利益的產品。',
@@ -857,6 +1000,28 @@
       'global.s2.li3': '设定波动率控制与风险预算再平衡机制',
       'global.s2.p2': '一旦宏观环境发生变化，模型会发出调仓信号，帮助客户捕捉机会或规避风险。每季度出具资产配置建议报告，并可根据重大事件（如联储议息）触发临时调仓。',
 
+      'chart.title': '资产配置模型（AAM）',
+      'chart.c1.title': '战略资产配置',
+      'chart.saag1.i1': '要求回报率',
+      'chart.saag1.i2': '风险承受度',
+      'chart.saag1.i3': '资产收益率',
+      'chart.saag2.i1': '量化战略配置模型',
+      'chart.saag3.i1': '权益',
+      'chart.saag3.i2': '固收',
+      'chart.saag3.i3': '商品',
+      'chart.saag3.i4': '货币',
+      'chart.portg.i1': '资产配置组合',
+      'chart.c3.title': '战术资产配置',
+      'chart.taag1.i1': '一年比例',
+      'chart.taag1.i2': '半年比例',
+      'chart.taag1.i3': '月度比例',
+      'chart.taag2.i1': '宏观数据追踪与再平衡模型',
+      'chart.taag3.i1': '市场<br>估值',
+      'chart.taag3.i2': '流动<br>性',
+      'chart.taag3.i3': '宏观<br>周期',
+      'chart.taag3.i4': '产业<br>趋势',
+      'chart.taag3.i5': '盈利<br>预测',
+
       'insurance.detail.title': '港险规划',
       'insurance.intro': '我们拥有多年的保险配置经验，会根据您的需求和情况选择合适的险种来覆盖您的保障性需求。我们给您的方案可能是一个产品，也有可能是多个产品的组合。我们提供全市场产品对比，不以佣金为导向，只选择最符合您利益的产品。',
       'insurance.s1.title': '香港保险产品配置',
@@ -940,6 +1105,28 @@
       'global.s2.li3': 'Implementing volatility control and risk budgeting rebalancing mechanisms',
       'global.s2.p2': 'When the macro environment shifts, the model triggers rebalancing signals to capture opportunities or mitigate risks. We issue quarterly asset allocation reports and can initiate ad-hoc adjustments in response to major events (e.g., FOMC meetings).',
 
+      'chart.title': 'Asset Allocation Model (AAM)',
+      'chart.c1.title': 'Strategic Asset Allocation',
+      'chart.saag1.i1': 'Required Return',
+      'chart.saag1.i2': 'Risk Tolerance',
+      'chart.saag1.i3': 'Asset Returns',
+      'chart.saag2.i1': 'Quantitative Strategic Allocation Model',
+      'chart.saag3.i1': 'Equities',
+      'chart.saag3.i2': 'Fixed Income',
+      'chart.saag3.i3': 'Commodities',
+      'chart.saag3.i4': 'Currencies',
+      'chart.portg.i1': 'Asset Allocation Portfolio',
+      'chart.c3.title': 'Tactical Asset Allocation',
+      'chart.taag1.i1': '1-Year Allocation',
+      'chart.taag1.i2': '6-Month Allocation',
+      'chart.taag1.i3': 'Monthly Allocation',
+      'chart.taag2.i1': 'Macro Data Tracking & Rebalancing Model',
+      'chart.taag3.i1': 'Market &<br>Valuation',
+      'chart.taag3.i2': 'Liquidity',
+      'chart.taag3.i3': 'Macro Cycle',
+      'chart.taag3.i4': 'Industry Trends',
+      'chart.taag3.i5': 'Earnings Forecast',
+
       'insurance.detail.title': 'HK Insurance Solutions',
       'insurance.intro': 'With years of insurance advisory experience, we select the most suitable insurance types based on your needs and circumstances to cover your protection requirements. Our recommendation may be a single product or a combination of multiple products. We provide market-wide product comparisons and are never commission-driven — we only recommend products that best serve your interests.',
       'insurance.s1.title': 'Hong Kong Insurance Products',
@@ -961,7 +1148,7 @@
   // ==================== STATE ====================
   let currentLang = localStorage.getItem('spruce-lang') || 'zh-HK';
   let currentView = 'home';
-  const VERSION = '2.0.2';
+  const VERSION = '2.0.7';
 
   // ==================== DOM REFS ====================
   const viewHome    = document.getElementById('view-home');
@@ -997,6 +1184,70 @@
     });
   }
 
+  // ==================== ALLOCATION CHART DRAWING ====================
+  function drawChart() {
+    const chartSection = document.getElementById('allocationChart');
+    if (!chartSection) return;
+    if (!chartSection.closest('.view.active')) return;
+
+    const svg = document.getElementById('chartSvg');
+    const rect = chartSection.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) return;
+
+    svg.setAttribute('viewBox', '0 0 ' + rect.width + ' ' + rect.height);
+    svg.style.width = rect.width + 'px';
+    svg.style.height = rect.height + 'px';
+
+    // Clear existing paths
+    svg.querySelectorAll('path').forEach(function(p) { p.remove(); });
+
+    var connections = [
+      { from: 'saag1', to: 'saag2', dir: 'down' },
+      { from: 'saag2', to: 'saag3', dir: 'down' },
+      { from: 'saag3', to: 'portg', dir: 'down' },
+      { from: 'taag3', to: 'taag2', dir: 'up'   },
+      { from: 'taag2', to: 'taag1', dir: 'up'   },
+      { from: 'taag1', to: 'portg', dir: 'up'   }
+    ];
+
+    connections.forEach(function(conn) {
+      var fromGroup = chartSection.querySelector('[data-group="' + conn.from + '"]');
+      var toGroup   = chartSection.querySelector('[data-group="' + conn.to + '"]');
+      if (!fromGroup || !toGroup) return;
+
+      var fromSpans = Array.from(fromGroup.querySelectorAll('span'));
+      var toSpans   = Array.from(toGroup.querySelectorAll('span'));
+      var isDown    = conn.dir === 'down';
+
+      fromSpans.forEach(function(fromSpan) {
+        var fr = fromSpan.getBoundingClientRect();
+        var sx = (fr.left + fr.right) / 2 - rect.left;
+        var sy = isDown ? fr.bottom - rect.top : fr.top - rect.top;
+
+        toSpans.forEach(function(toSpan) {
+          var tr = toSpan.getBoundingClientRect();
+          var tx = (tr.left + tr.right) / 2 - rect.left;
+          var ty = isDown ? tr.top - rect.top : tr.bottom - rect.top;
+          var my = (sy + ty) / 2;
+
+          var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          var d = 'M ' + sx + ' ' + sy + ' L ' + sx + ' ' + my + ' L ' + tx + ' ' + my + ' L ' + tx + ' ' + ty;
+          path.setAttribute('d', d);
+          path.setAttribute('stroke', '#B7A987');
+          path.setAttribute('stroke-width', '1.5');
+          path.setAttribute('fill', 'none');
+          path.setAttribute('stroke-linejoin', 'round');
+          path.setAttribute('marker-end', 'url(#arrowGold)');
+          svg.appendChild(path);
+        });
+      });
+    });
+  }
+
+  function scheduleChartDraw() {
+    setTimeout(drawChart, 100);
+  }
+
   // ==================== VIEW SWITCHING ====================
   function showView(viewName, pushState = true) {
     allViews.forEach(v => v.classList.remove('active'));
@@ -1013,6 +1264,8 @@
 
     // Re-apply language for newly visible content
     applyLanguage(currentLang);
+    // Redraw chart if switching to global-allocation view
+    if (viewName === 'global-allocation') scheduleChartDraw();
     // Scroll to top
     window.scrollTo(0, 0);
   }
@@ -1028,6 +1281,7 @@
       currentLang = lang;
       localStorage.setItem('spruce-lang', lang);
       applyLanguage(lang);
+      scheduleChartDraw();
     }
   });
 
@@ -1065,6 +1319,13 @@
         showView('home', false);
       }
     }
+  });
+
+  // Redraw chart on resize
+  var resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(drawChart, 200);
   });
 
   // ==================== INIT ====================
