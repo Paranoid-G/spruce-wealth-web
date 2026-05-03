@@ -305,7 +305,7 @@
     width: 100%;
     padding-top: 12px;
     margin-top: 4px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid var(--gold);
   }
   .team-card.expanded .team-detail { display: block; }
   .team-bio {
@@ -318,7 +318,7 @@
   .footer {
     padding: 40px var(--pad) 32px;
     text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.08);
+    border-top: 1px solid var(--gold);
     font-size: 13px;
     color: var(--text-muted);
   }
@@ -358,7 +358,7 @@
     z-index: 100;
     background: var(--bg);
     padding: 14px var(--pad);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid var(--gold);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -398,7 +398,7 @@
     color: var(--gold);
     margin-bottom: 12px;
     padding-bottom: 8px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid var(--gold);
   }
   .detail-section p {
     font-size: 14px;
@@ -587,10 +587,11 @@
       <h2 class="section-title" data-i18n="footer.title"></h2>
       <p class="footer-tagline" data-i18n="footer.tagline"></p>
       <div class="footer-contact">
-        <div><i class="fa-solid fa-phone"></i> <a href="tel:+85246094151" data-i18n="footer.hk"></a></div>
-        <div><i class="fa-solid fa-phone"></i> <a href="tel:+8618603000300" data-i18n="footer.cn"></a></div>
+        <div><i class="fa-solid fa-phone"></i> <i class="fa-brands fa-weixin"></i> <i class="fa-brands fa-whatsapp"></i> <a href="tel:+85246094151" data-i18n="footer.hk"></a></div>
+        <div><i class="fa-solid fa-phone"></i> <i class="fa-brands fa-weixin"></i> <a href="tel:+8618603000300" data-i18n="footer.cn"></a></div>
+        <div><i class="fa-solid fa-envelope"></i> <a href="mailto:info@SGWM.hk">info@SGWM.hk</a></div>
       </div>
-      <p class="footer-copy" data-i18n="footer.copy"></p>
+      <p class="footer-copy"><span data-i18n="footer.copy"></span> <span id="versionNumber"></span></p>
     </footer>
   </div>
 
@@ -603,6 +604,9 @@
       <span class="detail-title" data-i18n="wealth.detail.title"></span>
     </div>
     <div class="detail-body">
+      <div class="detail-section">
+        <p data-i18n="wealth.intro"></p>
+      </div>
       <div class="detail-section">
         <h3 class="detail-section-title" data-i18n="wealth.s1.title"></h3>
         <p data-i18n="wealth.s1.p1"></p>
@@ -659,14 +663,17 @@
     </div>
     <div class="detail-body">
       <div class="detail-section">
+        <p data-i18n="insurance.intro"></p>
+      </div>
+      <div class="detail-section">
         <h3 class="detail-section-title" data-i18n="insurance.s1.title"></h3>
         <p data-i18n="insurance.s1.p1"></p>
         <ul>
           <li data-i18n="insurance.s1.li1"></li>
           <li data-i18n="insurance.s1.li2"></li>
           <li data-i18n="insurance.s1.li3"></li>
+          <li data-i18n="insurance.s1.li4"></li>
         </ul>
-        <p data-i18n="insurance.s1.p2"></p>
       </div>
       <div class="detail-section">
         <h3 class="detail-section-title" data-i18n="insurance.s2.title"></h3>
@@ -742,20 +749,21 @@
 
       // ---- Wealth Planning Detail ----
       'wealth.detail.title': '財富規劃',
+      'wealth.intro': '每個客戶都是獨一無二的，你的財務狀況、需求、目標、偏好、風險承受能力、投資期限、現金流的安排等等因素，決定了你的財富規劃一定不會與任何人相同。<br><br>我們採用三模型法為您量身定制財富規劃，出具詳細投資策劃書，為您在全球範圍、全資產類別、全品種產品中尋找優質資產構建組合，為您實現財富目標。',
       'wealth.s1.title': '需求確認模型',
-      'wealth.s1.p1': '通過深入的客戶訪談與風險測評，精準識別您的財務目標（如子女教育、退休規劃、財富傳承）、時間範圍及風險承受能力。我們採用國際通用的問卷與行為金融學工具，確保為您描繪完整的財富畫像，為後續資產配置奠定堅實基礎。',
+      'wealth.s1.p1': '通過深入的客戶訪談與風險測評，精準識別您的財務目標（如子女教育、退休規劃、財富傳承）、時間範圍及風險承受能力。我們採用自研模型及金融工具，確保為您描繪完整的財富畫像，為後續資產配置奠定堅實基礎。',
       'wealth.s2.title': '資產切分模型',
-      'wealth.s2.p1': '將您的總資產科學切分為四大功能模塊，每個模塊對應不同的風險收益特徵與流動性安排：',
+      'wealth.s2.p1': '根據資金自身屬性，我們將您的資產切分為四大模塊，以對應您不同的需求：',
       'wealth.s2.li1': '流動性資產：滿足日常開支與應急需求',
-      'wealth.s2.li2': '保障類資產：醫療、意外、人壽保險等風險轉移工具',
-      'wealth.s2.li3': '增值類資產：股票、基金、另類投資等追求長期增長',
-      'wealth.s2.li4': '傳承類資產：信託、保單架構等實現代際傳承',
+      'wealth.s2.li2': '保障類資產：養老、醫療、意外等保障類需求',
+      'wealth.s2.li3': '增值類資產：教育、房產等大額支出及可選消費需求',
+      'wealth.s2.li4': '傳承類資產：資產隔離、保全與傳承需求',
       'wealth.s3.title': '現金流匹配模型',
-      'wealth.s3.p1': '基於您當前的初始資產、未來預期現金流入（如工作收入、企業分紅）與流出（如購房、子女學費），通過蒙特卡洛模擬測算出您真實要求的年化回報率。我們以此為基準，構建能夠覆蓋所有負債端現金流的投資組合，避免非必要的風險承擔。財富也有自己的生命周期——創造、積累、傳承，我們幫助您在每個重要節點做好準備。',
+      'wealth.s3.p1': '基於您當前的初始資產、未來預期現金流入（如工作收入、企業分紅）與流出（如購房、子女學費）、傳承目標，通過自研工具測算出您真實要求的年化回報率。<br><br>我們以此為基準，構建能夠覆蓋所有負債端現金流的投資組合，避免非必要的風險承擔。<br><br>財富也有自己的生命周期——創造、積累、傳承，我們幫助您在每個重要節點做好準備。',
 
       // ---- Global Allocation Detail ----
       'global.detail.title': '全球資產配置',
-      'global.intro': '我們提供真正的全球多資產配置解決方案，通過科學的六步流程（明確需求 → 投資規劃書 → 全市場覆蓋 → 全資產類別 → 全品種配置 → 動態調整），為客戶構建穩健的全球投資組合。核心分為兩個層面：',
+      'global.intro': '我們提供全球多資產配置解決方案，充分分散風險的同時尋找更好的投資機會。我們根據您財富規劃書中的目標及約束，構建戰略資產配置方案（SAA）；根據全球政治、宏觀、產業動態進行戰術配置（TAA）調整；通過自研的產品評估體系，自下而上的優選產品構建組合，以實現您的財富目標。',
       'global.s1.title': '戰略資產配置（SAA）',
       'global.s1.p1': '根據您的長期回報要求與風險容忍度，在不同資產類別（全球股票、債券、大宗商品、房地產、私募股權等）和不同市場（發達市場、新興市場）之間設定長期目標權重。我們基於諾貝爾獎得主的均值-方差模型及 Black-Litterman 模型，確保組合在理論前沿上最優。',
       'global.s2.title': '戰術資產配置（TAA）',
@@ -767,15 +775,16 @@
 
       // ---- HK Insurance Detail ----
       'insurance.detail.title': '港險規劃',
+      'insurance.intro': '我們擁有多年的保險配置經驗，會根據您的需求和情況選擇合適您的險種來覆蓋您的保障性需求。我們給您的方案可能是一個產品，也有可能是多個產品的組合。我們提供全市場產品對比，不以佣金為導向，只選擇最符合您利益的產品。',
       'insurance.s1.title': '香港保險產品配置',
-      'insurance.s1.p1': '我們代理多家頂級國際保險公司（如友邦、保誠、安盛等），為您精選：',
-      'insurance.s1.li1': '儲蓄分紅險：長期複利增值，適合教育金、退休金規劃',
+      'insurance.s1.p1': '我們與多家頂級國際保險公司合作（如保誠、安盛、友邦等），為您精選：',
+      'insurance.s1.li1': '高端醫療險：全球頂尖醫療資源的通行證',
       'insurance.s1.li2': '重大疾病保險：全面覆蓋癌症、心臟病等，多次賠付',
-      'insurance.s1.li3': '終身壽險：槓桿傳承，資產隔離及稅務優化',
-      'insurance.s1.p2': '我們提供全市場產品對比，不以佣金為導向，只選擇最符合您利益的產品。',
+      'insurance.s1.li3': '儲蓄分紅險：長期複利增值，適合教育金、退休金規劃',
+      'insurance.s1.li4': '終身壽險：槓桿傳承，資產隔離及稅務優化',
       'insurance.s2.title': '高端全球醫療保障方案',
-      'insurance.s2.p1': '整合全球頂尖醫療資源（如梅奧診所、約翰霍普金斯、香港養和醫院等），保障範圍包括：',
-      'insurance.s2.li1': '全球緊急救援及醫療轉運',
+      'insurance.s2.p1': '整合全球頂尖醫療資源（如梅奧診所、約翰霍普金斯、香港養和、國內和睦家等），保障範圍包括：',
+      'insurance.s2.li1': '全球範圍內就醫、救援及醫療轉運',
       'insurance.s2.li2': '第二診療意見及專家會診',
       'insurance.s2.li3': '直付服務（無需自行墊付醫療費）',
       'insurance.s2.li4': '年度體檢及健康管理跟蹤',
@@ -825,19 +834,20 @@
       'footer.copy': '© 2025 香港云杉财富有限公司 Spruce Global Wealth Management Ltd. 版权所有',
 
       'wealth.detail.title': '财富规划',
+      'wealth.intro': '每个客户都是独一无二的，你的财务状况、需求、目标、偏好、风险承受能力、投资期限、现金流的安排等等因素，决定了你的财富规划一定不会与任何人相同。<br><br>我们采用三模型法为您量身定制财富规划，出具详细投资策划书，为您在全球范围、全资产类别、全品种产品中寻找优质资产构建组合，为您实现财富目标。',
       'wealth.s1.title': '需求确认模型',
-      'wealth.s1.p1': '通过深入的客户访谈与风险测评，精准识别您的财务目标（如子女教育、退休规划、财富传承）、时间范围及风险承受能力。我们采用国际通用的问卷与行为金融学工具，确保为您描绘完整的财富画像，为后续资产配置奠定坚实基础。',
+      'wealth.s1.p1': '通过深入的客户访谈与风险测评，精准识别您的财务目标（如子女教育、退休规划、财富传承）、时间范围及风险承受能力。我们采用自研模型及金融工具，确保为您描绘完整的财富画像，为后续资产配置奠定坚实基础。',
       'wealth.s2.title': '资产切分模型',
-      'wealth.s2.p1': '将您的总资产科学切分为四大功能模块，每个模块对应不同的风险收益特征与流动性安排：',
+      'wealth.s2.p1': '根据资金自身属性，我们将您的资产切分为四大模块，以对应您不同的需求：',
       'wealth.s2.li1': '流动性资产：满足日常开支与应急需求',
-      'wealth.s2.li2': '保障类资产：医疗、意外、人寿保险等风险转移工具',
-      'wealth.s2.li3': '增值类资产：股票、基金、另类投资等追求长期增长',
-      'wealth.s2.li4': '传承类资产：信托、保单架构等实现代际传承',
+      'wealth.s2.li2': '保障类资产：养老、医疗、意外等保障类需求',
+      'wealth.s2.li3': '增值类资产：教育、房产等大额支出及可选消费需求',
+      'wealth.s2.li4': '传承类资产：资产隔离、保全与传承需求',
       'wealth.s3.title': '现金流匹配模型',
-      'wealth.s3.p1': '基于您当前的初始资产、未来预期现金流入（如工作收入、企业分红）与流出（如购房、子女学费），通过蒙特卡洛模拟测算出您真实要求的年化回报率。我们以此为基准，构建能够覆盖所有负债端现金流的投资组合，避免非必要的风险承担。财富也有自己的生命周期——创造、积累、传承，我们帮助您在每个重要节点做好准备。',
+      'wealth.s3.p1': '基于您当前的初始资产、未来预期现金流入（如工作收入、企业分红）与流出（如购房、子女学费）、传承目标，通过自研工具测算出您真实要求的年化回报率。<br><br>我们以此为基准，构建能够覆盖所有负债端现金流的投资组合，避免非必要的风险承担。<br><br>财富也有自己的生命周期——创造、积累、传承，我们帮助您在每个重要节点做好准备。',
 
       'global.detail.title': '全球资产配置',
-      'global.intro': '我们提供真正的全球多资产配置解决方案，通过科学的六步流程（明确需求 → 投资规划书 → 全市场覆盖 → 全资产类别 → 全品种配置 → 动态调整），为客户构建稳健的全球投资组合。核心分为两个层面：',
+      'global.intro': '我们提供全球多资产配置解决方案，充分分散风险的同时寻找更好的投资机会。我们根据您财富规划书中的目标及约束，构建战略资产配置方案（SAA）；根据全球政治、宏观、产业动态进行战术配置（TAA）调整；通过自研的产品评估体系，自下而上的优选产品构建组合，以实现您的财富目标。',
       'global.s1.title': '战略资产配置（SAA）',
       'global.s1.p1': '根据您的长期回报要求与风险容忍度，在不同资产类别（全球股票、债券、大宗商品、房地产、私募股权等）和不同市场（发达市场、新兴市场）之间设定长期目标权重。我们基于诺贝尔奖得主的均值-方差模型及 Black-Litterman 模型，确保组合在理论前沿上最优。',
       'global.s2.title': '战术资产配置（TAA）',
@@ -848,15 +858,16 @@
       'global.s2.p2': '一旦宏观环境发生变化，模型会发出调仓信号，帮助客户捕捉机会或规避风险。每季度出具资产配置建议报告，并可根据重大事件（如联储议息）触发临时调仓。',
 
       'insurance.detail.title': '港险规划',
+      'insurance.intro': '我们拥有多年的保险配置经验，会根据您的需求和情况选择合适的险种来覆盖您的保障性需求。我们给您的方案可能是一个产品，也有可能是多个产品的组合。我们提供全市场产品对比，不以佣金为导向，只选择最符合您利益的产品。',
       'insurance.s1.title': '香港保险产品配置',
-      'insurance.s1.p1': '我们代理多家顶级国际保险公司（如友邦、保诚、安盛等），为您精选：',
-      'insurance.s1.li1': '储蓄分红险：长期复利增值，适合教育金、退休金规划',
+      'insurance.s1.p1': '我们与多家顶级国际保险公司合作（如保诚、安盛、友邦等），为您精选：',
+      'insurance.s1.li1': '高端医疗险：全球顶尖医疗资源的通行证',
       'insurance.s1.li2': '重大疾病保险：全面覆盖癌症、心脏病等，多次赔付',
-      'insurance.s1.li3': '终身寿险：杠杆传承，资产隔离及税务优化',
-      'insurance.s1.p2': '我们提供全市场产品对比，不以佣金为导向，只选择最符合您利益的产品。',
+      'insurance.s1.li3': '储蓄分红险：长期复利增值，适合教育金、退休金规划',
+      'insurance.s1.li4': '终身寿险：杠杆传承，资产隔离及税务优化',
       'insurance.s2.title': '高端全球医疗保障方案',
-      'insurance.s2.p1': '整合全球顶尖医疗资源（如梅奥诊所、约翰霍普金斯、香港养和医院等），保障范围包括：',
-      'insurance.s2.li1': '全球紧急救援及医疗转运',
+      'insurance.s2.p1': '整合全球顶尖医疗资源（如梅奥诊所、约翰霍普金斯、香港养和、国内和睦家等），保障范围包括：',
+      'insurance.s2.li1': '全球范围内就医、救援及医疗转运',
       'insurance.s2.li2': '第二诊疗意见及专家会诊',
       'insurance.s2.li3': '直付服务（无需自行垫付医疗费）',
       'insurance.s2.li4': '年度体检及健康管理跟踪',
@@ -906,19 +917,20 @@
       'footer.copy': '© 2025 Spruce Global Wealth Management Ltd. All rights reserved.',
 
       'wealth.detail.title': 'Wealth Planning',
+      'wealth.intro': 'Every client is unique. Your financial situation, needs, goals, preferences, risk tolerance, investment horizon, cash flow arrangements, and many other factors mean that your wealth plan will never be identical to anyone else\'s.<br><br>We employ a three-model approach to craft a bespoke wealth plan tailored specifically to you, producing a detailed investment proposal. We search across global markets, all asset classes, and all product categories to identify quality assets and construct a portfolio that helps you achieve your wealth objectives.',
       'wealth.s1.title': 'Needs Assessment Model',
-      'wealth.s1.p1': 'Through in-depth client interviews and risk assessments, we precisely identify your financial goals (e.g., children\'s education, retirement planning, wealth transfer), time horizon, and risk tolerance. Using internationally recognized questionnaires and behavioral finance tools, we build a complete wealth profile that serves as the foundation for subsequent asset allocation.',
+      'wealth.s1.p1': 'Through in-depth client interviews and risk assessments, we precisely identify your financial goals (e.g., children\'s education, retirement planning, wealth transfer), time horizon, and risk tolerance. Using self-developed models and financial tools, we build a complete wealth profile that serves as the foundation for subsequent asset allocation.',
       'wealth.s2.title': 'Asset Segmentation Model',
-      'wealth.s2.p1': 'We scientifically divide your total assets into four functional modules, each with distinct risk-return characteristics and liquidity arrangements:',
+      'wealth.s2.p1': 'Based on the inherent characteristics of your capital, we segment your assets into four modules, each aligned with your distinct needs:',
       'wealth.s2.li1': 'Liquidity Assets: Covering daily expenses and emergency needs',
-      'wealth.s2.li2': 'Protection Assets: Medical, accident, and life insurance for risk transfer',
-      'wealth.s2.li3': 'Growth Assets: Equities, funds, and alternative investments for long-term appreciation',
-      'wealth.s2.li4': 'Legacy Assets: Trusts and insurance structures for intergenerational wealth transfer',
+      'wealth.s2.li2': 'Protection Assets: Retirement, medical, and accident protection needs',
+      'wealth.s2.li3': 'Growth Assets: Major expenditures such as education, real estate, and discretionary consumption needs',
+      'wealth.s2.li4': 'Legacy Assets: Asset segregation, preservation, and wealth transfer needs',
       'wealth.s3.title': 'Cash Flow Matching Model',
-      'wealth.s3.p1': 'Based on your current initial assets, projected future cash inflows (e.g., employment income, dividends) and outflows (e.g., property purchases, tuition), we use Monte Carlo simulation to derive your required annualized rate of return. We then construct a portfolio that covers all liability-side cash flows, avoiding unnecessary risk-taking. Wealth has its own lifecycle — creation, accumulation, and transfer — and we help you prepare for every critical milestone along the way.',
+      'wealth.s3.p1': 'Based on your current initial assets, projected future cash inflows (e.g., employment income, dividends) and outflows (e.g., property purchases, tuition), and wealth transfer goals, we use self-developed tools to derive your required annualized rate of return.<br><br>We then construct a portfolio that covers all liability-side cash flows, avoiding unnecessary risk-taking.<br><br>Wealth has its own lifecycle — creation, accumulation, and transfer — and we help you prepare for every critical milestone along the way.',
 
       'global.detail.title': 'Global Asset Allocation',
-      'global.intro': 'We offer true global multi-asset allocation solutions through a disciplined six-step process (Define Needs → Investment Proposal → Multi-Market Coverage → Multi-Asset Classes → Multi-Instrument Allocation → Dynamic Rebalancing) to build robust global portfolios. Our approach operates at two core levels:',
+      'global.intro': 'We provide global multi-asset allocation solutions that fully diversify risk while seeking better investment opportunities. Based on the goals and constraints outlined in your wealth planning proposal, we construct a Strategic Asset Allocation (SAA) plan; we make Tactical Asset Allocation (TAA) adjustments based on global political, macroeconomic, and industry dynamics; and through our proprietary product evaluation system, we build portfolios by selecting products from the bottom up to achieve your wealth objectives.',
       'global.s1.title': 'Strategic Asset Allocation (SAA)',
       'global.s1.p1': 'Based on your long-term return requirements and risk tolerance, we set target weights across asset classes (global equities, fixed income, commodities, real estate, private equity, etc.) and markets (developed and emerging). We employ the Nobel Prize-winning mean-variance framework and the Black-Litterman model to ensure the portfolio sits on the efficient frontier.',
       'global.s2.title': 'Tactical Asset Allocation (TAA)',
@@ -929,15 +941,16 @@
       'global.s2.p2': 'When the macro environment shifts, the model triggers rebalancing signals to capture opportunities or mitigate risks. We issue quarterly asset allocation reports and can initiate ad-hoc adjustments in response to major events (e.g., FOMC meetings).',
 
       'insurance.detail.title': 'HK Insurance Solutions',
+      'insurance.intro': 'With years of insurance advisory experience, we select the most suitable insurance types based on your needs and circumstances to cover your protection requirements. Our recommendation may be a single product or a combination of multiple products. We provide market-wide product comparisons and are never commission-driven — we only recommend products that best serve your interests.',
       'insurance.s1.title': 'Hong Kong Insurance Products',
-      'insurance.s1.p1': 'We partner with multiple top-tier international insurers (including AIA, Prudential, AXA, and others) to curate:',
-      'insurance.s1.li1': 'Savings & Participating Policies: Long-term compound growth, ideal for education funds and retirement planning',
+      'insurance.s1.p1': 'We partner with multiple top-tier international insurers (including Prudential, AXA, AIA, and others) to curate:',
+      'insurance.s1.li1': 'Premium Medical Insurance: Your gateway to world-class medical resources',
       'insurance.s1.li2': 'Critical Illness Insurance: Comprehensive coverage for cancer, heart disease, and more, with multiple claims',
-      'insurance.s1.li3': 'Whole Life Insurance: Leveraged wealth transfer, asset segregation, and tax optimization',
-      'insurance.s1.p2': 'We provide market-wide product comparisons and are never commission-driven — we only recommend products that best serve your interests.',
+      'insurance.s1.li3': 'Savings & Participating Policies: Long-term compound growth, ideal for education funds and retirement planning',
+      'insurance.s1.li4': 'Whole Life Insurance: Leveraged wealth transfer, asset segregation, and tax optimization',
       'insurance.s2.title': 'Premium Global Medical Coverage',
-      'insurance.s2.p1': 'Integrating world-class medical resources (including Mayo Clinic, Johns Hopkins, Hong Kong Sanatorium & Hospital, etc.), coverage includes:',
-      'insurance.s2.li1': 'Global emergency assistance and medical evacuation',
+      'insurance.s2.p1': 'Integrating world-class medical resources (including Mayo Clinic, Johns Hopkins, Hong Kong Sanatorium & Hospital, domestic United Family Healthcare, etc.), coverage includes:',
+      'insurance.s2.li1': 'Global access to medical treatment, emergency assistance, and medical evacuation',
       'insurance.s2.li2': 'Second medical opinion and specialist consultations',
       'insurance.s2.li3': 'Direct billing service (no out-of-pocket medical payments)',
       'insurance.s2.li4': 'Annual health check-ups and wellness tracking',
@@ -948,6 +961,7 @@
   // ==================== STATE ====================
   let currentLang = localStorage.getItem('spruce-lang') || 'zh-HK';
   let currentView = 'home';
+  const VERSION = '2.0.2';
 
   // ==================== DOM REFS ====================
   const viewHome    = document.getElementById('view-home');
@@ -973,7 +987,7 @@
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (i18nData[lang] && i18nData[lang][key]) {
-        el.textContent = i18nData[lang][key];
+        el.innerHTML = i18nData[lang][key];
       }
     });
     document.documentElement.lang = lang;
@@ -1056,6 +1070,7 @@
   // ==================== INIT ====================
   function init() {
     applyLanguage(currentLang);
+    document.getElementById('versionNumber').textContent = 'v' + VERSION;
 
     const hashView = getViewId(window.location.hash);
     if (hashView) {
